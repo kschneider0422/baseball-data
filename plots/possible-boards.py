@@ -55,6 +55,8 @@ for col, nums in columns.items():
             seen.add(tup)
             current = deepcopy(base)
             for row, val in pairs:
+                if (row, col) == question:
+                    break
                 current[(row, col)] = val
             all_cols[col].append(current)
             
@@ -104,6 +106,10 @@ for cdicts in prod(*test[:2]):
     C = Cave(dims, clues)
     C.board.unshaded.add(question)
     check = C.board.check_clues()
+    if check is True:
+        check = C.board.connected_unshaded()
+    if check is True:
+        check = C.board.connected_shaded()
     
     if check is True:
         good.append(clues)
@@ -133,11 +139,15 @@ for cdicts in prod(starts, all_cols[2]):
     C = Cave(dims, clues)
     C.board.unshaded.add(question)
     check = C.board.check_clues()
+    if check is True:
+        check = C.board.connected_unshaded()
+    if check is True:
+        check = C.board.connected_shaded()
     
     if check is True:
         good.append(clues)
         
-    if count % 1000 == 0:
+    if count % 100000 == 0:
         print(count)
         
 count = 0
@@ -159,11 +169,15 @@ for cdicts in prod(starts, all_cols[5]):
     C = Cave(dims, clues)
     C.board.unshaded.add(question)
     check = C.board.check_clues()
+    if check is True:
+        check = C.board.connected_unshaded()
+    if check is True:
+        check = C.board.connected_shaded()
     
     if check is True:
         good.append(clues)
         
-    if count % 1000 == 0:
+    if count % 100000 == 0:
         print(count)
     
 count = 0
@@ -185,9 +199,13 @@ for cdicts in prod(starts, all_cols[6]):
     C = Cave(dims, clues)
     C.board.unshaded.add(question)
     check = C.board.check_clues()
+    if check is True:
+        check = C.board.connected_unshaded()
+    if check is True:
+        check = C.board.connected_shaded()
     
     if check is True:
         good.append(clues)
         
-    if count % 1000 == 0:
+    if count % 100000 == 0:
         print(count)
