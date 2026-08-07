@@ -155,7 +155,7 @@ class Board:
                     ucells += a
                     pcells += b
 
-                # print(ucells, pcells)
+                # print(ucells, pcells, flex)
                 if total < val:
                     # print(total, val)
                     out = False
@@ -278,12 +278,14 @@ class Board:
                                 break
                             c -= 1
                     if flex[3] == 1:
+                        # print('here')
                         c = col + 1
                         while True:
                             if (row, c) in self.pool:
                                 self.unshaded.add((row, c))
                                 self.pool.discard((row, c))
                                 break
+                            c += 1
 
                     done = False
 
@@ -426,12 +428,41 @@ class Cave:
                 break
 
 
-dims = (6, 6)
-clues = {(0, 1): 3, (2, 1): 2, (2, 4): 3, (3, 3): 11, (4, 2): 3, (5, 0): 3, (5, 4): 2}
+# dims = (6, 6)
+# clues = {(0, 1): 3, (2, 1): 2, (2, 4): 3, (3, 3): 11, (4, 2): 3, (5, 0): 3, (5, 4): 2}
 
-# dims = (3, 3)
-# clues = {(0, 1): 3, (1, 0): 3, (1, 1): 5, (1, 2): 3}
+# # dims = (3, 3)
+# # clues = {(0, 1): 3, (1, 0): 3, (1, 1): 5, (1, 2): 3}
 
-C = Cave(dims, clues)
-C.solve()
-print(len(C.solutions))
+# dims = (9, 9)
+
+# clues = {(8, 0): 11,
+#  (0, 0): 9,
+#  (1, 0): 9,
+#  (2, 0): 9,
+#  (3, 0): 9,
+#  (4, 0): 9,
+#  (5, 0): 11,
+#  (6, 0): 11,
+#  (7, 0): 12,
+#  (0, 1): 4,
+#  (1, 1): 4,
+#  (0, 2): 5,
+#  (1, 2): 5,
+#  (0, 5): 2,
+#  (1, 5): 2,
+#  (2, 5): 2,
+#  (0, 6): 2,
+#  (0, 7): 2,
+#  (1, 7): 5,
+#  (2, 7): 5,
+#  (3, 7): 5,
+#  (4, 7): 7,
+#  (0, 8): 2}
+
+# C = Cave(dims, clues)
+# print(C.board.check_clues())
+
+
+# C.solve()
+# print(len(C.solutions))
